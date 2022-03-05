@@ -98,6 +98,7 @@ const LoginForm = ({ history }) => {
                   </Button>
                 </Form.Item>
               </Form>
+              Build version : 03.05.01
             </div>
           </div>
         </div>
