@@ -94,7 +94,7 @@ const LoginForm = ({ history }) => {
                     className="login-form-button"
                     loading={loading}
                   >
-                    Log in
+                    Log inchekc
                   </Button>
                 </Form.Item>
               </Form>
