@@ -44,7 +44,7 @@ const LoginForm = ({ history }) => {
         <div>
           <div className="row justify-content-center align-items-center min-vh-100">
             <div className="col-md-4 align-self-center text-center">
-              <h2>Welcome Back!</h2>
+              <h2>Welcome Back! there</h2>
               <p>Input your login details to continue</p>
               <Form
                 name="normal_login"
