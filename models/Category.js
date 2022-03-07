@@ -23,6 +23,10 @@ const categorySchema = new mongoose.Schema({
     type: String,
     default: null
   },
+  image: {
+    type: String,
+    default: null
+  },
  
   date: {
     type: Date,

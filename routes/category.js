@@ -6,7 +6,8 @@ const {
 const {
     getAllCategory,
     addCategory,
-    getAllParentCategory
+    getAllParentCategory,
+    getEditCategory,
 } = require('../controllers/categoryController');
 
 const Category = require('../models/Category');
@@ -15,6 +16,7 @@ const Category = require('../models/Category');
 router.get('/', getAllCategory);
 router.post('/add', addCategory);
 router.get('/parent', getAllParentCategory);
+router.post('/update', getEditCategory);
 
 
 module.exports = router;

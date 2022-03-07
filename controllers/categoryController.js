@@ -1,19 +1,21 @@
+const multer  = require('multer');
+const upload = multer({ dest: '/../public/data/uploads/category/' });
+const Category = require('../models/Category');
 const {
   getCategory,
+  getAndEditCategory,
 } = require('../services/category-services');
 
-const { addCategoryValidation } = require('../utils/validation');
-const Category = require('../models/Category');
-
+const { addCategoryValidation,
+  eidtCategoryValidation } = require('../utils/validation');
 
 const validation = {
   addcategory: addCategoryValidation,
-  
-};
+  editcategory: eidtCategoryValidation,
 
+};
 const handleValidation = (body, res, type) => {
   const { error } = validation[type](body);
-
   if (error) {
     throw Error(error.details[0].message);
   }
@@ -39,9 +41,7 @@ const getAllParentCategory = async (req, res) => {
   }
 };
 const addCategory = async (req, res) => {
-  // Validate data before creating a user
 
-  //   Hash password
   try {
     await handleValidation(req.body, res, 'addcategory');
     //   Checking if the user is already in the db
@@ -65,10 +65,39 @@ const addCategory = async (req, res) => {
   }
 };
 
+const getEditCategory = async (req, res) => {
+
+  try {
+    await handleValidation(req.body, res, 'editcategory');
+    //   Checking if the user is already in the db
+    const emailExist = await Category.findOne({ name: req.body.name });
+
+    if (emailExist) {
+      return res.status(400).json({ error_msg: 'Category already exists' });
+    }
+
+    // Create a new user
+    const { _id } = req.body;
+    
+   const user = await getAndEditCategory({ _id }, req.body);
+   // const user = await Category.findOneAndUpdate({ _id }, req.body);
+
+
+    // Generate and send token
+
+    // Send email using sendgrid here
+    return res.status(201).json({ data: user });
+  } catch (err) {
+    console.log({ err });
+    return res.status(400).json({ error_msg: err.message });
+  }
+};
+
 
 module.exports = {
   getAllCategory,
   addCategory,
-  getAllParentCategory
+  getAllParentCategory,
+  getEditCategory
  
 };

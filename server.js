@@ -17,7 +17,9 @@ const categoryRoute = require('./routes/category');
 
 const docsRoute = require('./routes/docs');
 const connectDB = require('./config/db');
-
+const multer  = require('multer')
+const upload = multer({ dest: '/../public/data/uploads/category/' });
+app.use(upload.array());
 dotenv.config();
 
 // Norgan

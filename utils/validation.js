@@ -6,7 +6,22 @@ const addCategoryValidation = (data) => {
     name: Joi.string().min(3).required(),
     parentId: Joi.string().allow(null),
     description: Joi.string().allow(null),
+    image: Joi.string().allow(null),
     isActive: Joi.boolean()
+  });
+
+  return schema.validate(data);
+};
+// edit category 
+const eidtCategoryValidation = (data) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).required(),
+    parentId: Joi.string().allow(null),
+    description: Joi.string().allow(null),
+    image: Joi.string().allow(null),
+    isActive: Joi.boolean(),
+    _id: Joi.string().required()
+
   });
 
   return schema.validate(data);
@@ -95,5 +110,6 @@ module.exports = {
   passwordResetValidation,
   passwordChangeValidation,
   userEditValidation,
-  addCategoryValidation
+  addCategoryValidation,
+  eidtCategoryValidation
 };
