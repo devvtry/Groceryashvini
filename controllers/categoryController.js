@@ -4,14 +4,16 @@ const Category = require('../models/Category');
 const {
   getCategory,
   getAndEditCategory,
+  getSingleCategoryService,
 } = require('../services/category-services');
 
 const { addCategoryValidation,
-  eidtCategoryValidation } = require('../utils/validation');
+  eidtCategoryValidation,getSinlgeCategoryValidation } = require('../utils/validation');
 
 const validation = {
   addcategory: addCategoryValidation,
   editcategory: eidtCategoryValidation,
+  getSingleCat : getSinlgeCategoryValidation
 
 };
 const handleValidation = (body, res, type) => {
@@ -92,12 +94,22 @@ const getEditCategory = async (req, res) => {
     return res.status(400).json({ error_msg: err.message });
   }
 };
+const getSingleCategory = async (req, res) => {
+  try {
+    await handleValidation(req.body, res, 'getSingleCat');
 
+    const user = await getSingleCategoryService({ _id: req.body.id });
+    return res.status(200).json({ data: user });
+  } catch (err) {
+    return res.status(400).json({ error_msg: err.message });
+  }
+};
 
 module.exports = {
   getAllCategory,
   addCategory,
   getAllParentCategory,
-  getEditCategory
+  getEditCategory,
+  getSingleCategory
  
 };

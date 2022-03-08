@@ -39,8 +39,19 @@ const getAndEditCategory = async (query, newData) => {
   }
 };
 
+const getSingleCategoryService = async (query) => {
+  try {
+    console.log("query",query);
+    const user = await Category.findOne(query);
+    return user;
+  } catch (err) {
+    throw Error(err);
+  }
+};
+
 module.exports = {
   getCategory,
   getAllParentCategory,
-  getAndEditCategory
+  getAndEditCategory,
+  getSingleCategoryService
 };

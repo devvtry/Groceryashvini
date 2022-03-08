@@ -26,6 +26,18 @@ const eidtCategoryValidation = (data) => {
 
   return schema.validate(data);
 };
+
+// get single category
+const getSinlgeCategoryValidation = (data) => {
+  const schema = Joi.object({
+    
+    id: Joi.string().required()
+
+  });
+
+  return schema.validate(data);
+};
+
 // Register validation
 const registerValidation = (data) => {
   const schema = Joi.object({
@@ -111,5 +123,6 @@ module.exports = {
   passwordChangeValidation,
   userEditValidation,
   addCategoryValidation,
-  eidtCategoryValidation
+  eidtCategoryValidation,
+  getSinlgeCategoryValidation
 };
