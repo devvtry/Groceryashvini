@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     max: 255
   },
   catId: {
-    type: Object,    
+    type: mongoose.Schema.ObjectId,    
     default: null
   },
   childCatId: {

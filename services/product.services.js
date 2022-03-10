@@ -17,8 +17,32 @@ const getAndEditProduct = async (query, newData) => {
 
 const getSingleProductService = async (query) => {
   try {
-  
-    
+    console.log(query);
+  //   const user = await Product.aggregate([
+  //      { 
+  //       $match: { 
+  //           _id : query,
+           
+  //       }
+  //   },
+  //     { $lookup:
+  //      {
+  //        from: 'categories',
+  //        localField: 'catId',
+  //        foreignField: '_id',
+  //        as: 'catData'
+  //      }
+  //    },
+  //    { $lookup:
+  //      {
+  //        from: 'categories',
+  //        localField: 'childCatId',
+  //        foreignField: '_id',
+  //        as: 'childCatData'
+  //      }
+  //    }
+        
+  // ]);
     const user = await Product.findOne(query);
     return user;
   } catch (err) {
@@ -30,9 +54,24 @@ const getProduct = async (query) => {
   try {
     console.log("sdfsdf");
      const user = await Product.aggregate([
-
-        {$lookup:{ from: 'categories', localField:'_id', 
-          foreignField:'catId',as:'parentCat'}},
+       {$match: {/* In real I will have here some query involving fields from user */}},
+      { $lookup:
+       {
+         from: 'categories',
+         localField: 'catId',
+         foreignField: '_id',
+         as: 'catData'
+       }
+     },
+     { $lookup:
+       {
+         from: 'categories',
+         localField: 'childCatId',
+         foreignField: '_id',
+         as: 'childCatData'
+       }
+     }
+        
   ]);
     return user;
   } catch (err) {

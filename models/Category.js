@@ -9,10 +9,8 @@ const categorySchema = new mongoose.Schema({
     max: 255
   },
   parentId: {
-    type: Object,
-    //required: true,
-    min: 6,
-    max: 255,
+    type: mongoose.Schema.ObjectId,    
+
     default: null
   },
   isActive: {

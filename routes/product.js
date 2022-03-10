@@ -18,6 +18,7 @@ router.get('/', getAllProduct);
 router.post('/add', addProduct);
 router.post('/update', getEditProduct);
 router.post('/single', getSingleProduct);
+// router.post('/active-inactive', getSingleProduct);
 
 
 module.exports = router;
