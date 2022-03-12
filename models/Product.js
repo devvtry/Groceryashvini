@@ -40,7 +40,11 @@ const productSchema = new mongoose.Schema({
     type:String,
     default: null
   },
- 
+  variant: [{
+            _id: {type: mongoose.Schema.ObjectId,}, 
+            price: {type: String}, 
+            weight: {type: String},
+        }],
   date: {
     type: Date,
     default: Date.now
