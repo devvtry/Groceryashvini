@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Typography } from 'antd';
-import { UserOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
+import { UserOutlined, HomeOutlined, SettingOutlined, DiffOutlined, CopyOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import SidebarStyled from './SidebarStyled';
 
@@ -14,12 +14,12 @@ function Sidebar({ collapsed, index, loggedInUserId }) {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        // style={{
-        //   overflow: 'auto',
-        //   height: '100vh',
-        //   position: 'fixed',
-        //   left: 0
-        // }}
+      // style={{
+      //   overflow: 'auto',
+      //   height: '100vh',
+      //   position: 'fixed',
+      //   left: 0
+      // }}
       >
         <div className="logo">
           <Title level={2}>MERN DASH</Title>
@@ -40,6 +40,20 @@ function Sidebar({ collapsed, index, loggedInUserId }) {
               Users
             </Link>
           </Menu.Item>
+
+          <Menu.Item key="2" icon={<CopyOutlined />}>
+            <Link className="text-white" to="/dashboard/products">
+              Products
+            </Link>
+          </Menu.Item>
+
+          <Menu.Item key="2" icon={<DiffOutlined />}>
+            <Link className="text-white" to="/dashboard/categories">
+              Categories
+            </Link>
+          </Menu.Item>
+
+
           <Menu.Item key="3" icon={<SettingOutlined />}>
             <Link to={`/dashboard/user/${loggedInUserId}`}></Link>
             Account Settings

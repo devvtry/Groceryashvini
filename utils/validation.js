@@ -6,11 +6,38 @@ const addCategoryValidation = (data) => {
     name: Joi.string().min(3).required(),
     parentId: Joi.string().allow(null),
     description: Joi.string().allow(null),
+    image: Joi.string().allow(null),
     isActive: Joi.boolean()
   });
 
   return schema.validate(data);
 };
+// edit category 
+const eidtCategoryValidation = (data) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).required(),
+    parentId: Joi.string().allow(null),
+    description: Joi.string().allow(null),
+    image: Joi.string().allow(null),
+    isActive: Joi.boolean(),
+    _id: Joi.string().required()
+
+  });
+
+  return schema.validate(data);
+};
+
+// get single category
+const getSinlgeCategoryValidation = (data) => {
+  const schema = Joi.object({
+    
+    id: Joi.string().required()
+
+  });
+
+  return schema.validate(data);
+};
+
 // Register validation
 const registerValidation = (data) => {
   const schema = Joi.object({
@@ -87,6 +114,51 @@ const passwordChangeValidation = (data) => {
   return schema.validate(data);
 };
 
+
+const addProductValidation = (data) => {
+  const schema = Joi.object({
+    title: Joi.string().min(3).required(),
+    catId: Joi.string().allow(null),
+    childCatId: Joi.string().allow(null),
+    description: Joi.string().allow(null),
+    image: Joi.string().allow(null),
+    variant: Joi.string().allow(null),
+    price: Joi.string().required(),
+    offerPrice: Joi.string().required(),
+    quantity: Joi.string().required(),
+    isActive: Joi.boolean()
+  });
+
+  return schema.validate(data);
+};
+const getSinlgeProductValidation = (data) => {
+  const schema = Joi.object({
+    
+    id: Joi.string().required()
+
+  });
+
+  return schema.validate(data);
+};
+
+const eidtProductValidation = (data) => {
+  const schema = Joi.object({
+    title: Joi.string().min(3).required(),
+    catId: Joi.string().allow(null),
+    childCatId: Joi.string().allow(null),
+    description: Joi.string().allow(null),
+    image: Joi.string().allow(null),
+        variant: Joi.string().allow(null),
+    price: Joi.string().required(),
+    offerPrice: Joi.string().required(),
+    quantity: Joi.string().required(),
+    isActive: Joi.boolean(),
+    _id: Joi.string().required()
+
+  });
+
+  return schema.validate(data);
+};
 module.exports = {
   loginValidation,
   registerValidation,
@@ -95,5 +167,10 @@ module.exports = {
   passwordResetValidation,
   passwordChangeValidation,
   userEditValidation,
-  addCategoryValidation
+  addCategoryValidation,
+  eidtCategoryValidation,
+  getSinlgeCategoryValidation,
+  addProductValidation,
+  getSinlgeProductValidation,
+  eidtProductValidation
 };

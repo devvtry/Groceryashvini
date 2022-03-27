@@ -14,7 +14,7 @@ const LoginForm = ({ history }) => {
   const openNotification = () => {
     const args = {
       message: 'Login Details',
-      description: 'Email: test@gmail.com password: testing',
+      description: 'Email:test@yopmail.com password:asdasdasd',
       duration: 0
     };
     notification.open(args);
@@ -98,7 +98,7 @@ const LoginForm = ({ history }) => {
                   </Button>
                 </Form.Item>
               </Form>
-              Build version: 03.06.04
+              Build version: 03.22.04
             </div>
           </div>
         </div>

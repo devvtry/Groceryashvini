@@ -14,10 +14,13 @@ const postRoute = require('./routes/post');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
 const categoryRoute = require('./routes/category');
+const productRoute = require('./routes/product');
 
 const docsRoute = require('./routes/docs');
 const connectDB = require('./config/db');
-
+const multer  = require('multer')
+const upload = multer({ dest: '../public/data/uploads/category/' });
+app.use(upload.array());
 dotenv.config();
 
 // Norgan
@@ -42,6 +45,7 @@ app.use('/api/user', userRoute);
 app.use('/api/v1', docsRoute);
 app.use('/api/post', postRoute);
 app.use('/api/category', categoryRoute);
+app.use('/api/product', productRoute);
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
